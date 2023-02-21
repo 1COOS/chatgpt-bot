@@ -1,0 +1,2 @@
+import './telegram';
+import './discord';
