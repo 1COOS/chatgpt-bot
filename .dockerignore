@@ -1,37 +1,22 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-.secret
-.storage
-
 # dependencies
-/node_modules/
-/out/
-/dist/
+node_modules
+dist
+.vscode
+
+# testing
+coverage
 
 # production
-/build
+build
 
 # misc
 .DS_Store
-*.pem
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env
-.env.**.local
-
-# vercel
-.vercel
-
-#Hardhat files
-cache
-artifacts
-
-# logs
-/logs/
-
-docker-compose.yml
+.env.*

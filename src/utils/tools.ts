@@ -25,7 +25,7 @@ export const log = (...args: any[]) => {
 
 export const retryRequest = async <T>(
   promise: () => Promise<T>,
-  retryTimes = 3,
+  retryTimes = 10,
   retryInterval = 10000,
 ) => {
   let output: [any, T | null] = [null, null];
