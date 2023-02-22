@@ -1,7 +1,8 @@
-import { DISCORD_BOT_TOKEN } from '../utils/config';
+import config from '../utils/config';
 import { registerCommands } from './commands';
 import { chatGPTReply } from '../chatgpt';
 import { Client, GatewayIntentBits, Events } from 'discord.js';
+import { handleMessage } from './handler';
 
 const start = async () => {
   const client = new Client({
@@ -26,10 +27,12 @@ const start = async () => {
     if (!interaction.isChatInputCommand()) return;
     await interaction.deferReply();
 
-    const prompt = interaction.options.getString('question');
+    // const prompt = interaction.options.getString('question');
 
-    const response = await chatGPTReply(prompt, interaction.user.id);
-    await interaction.editReply(response);
+    // const response = await chatGPTReply(prompt, interaction.user.id);
+    // await interaction.editReply(response);
+
+    handleMessage(interaction);
   });
 
   client.on(Events.MessageCreate, async (message) => {
@@ -56,7 +59,7 @@ const start = async () => {
       await message.reply(response);
     }
   });
-  client.login(DISCORD_BOT_TOKEN);
+  client.login(config.discord.DISCORD_BOT_TOKEN);
   await registerCommands();
 };
 

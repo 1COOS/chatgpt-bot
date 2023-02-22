@@ -1,11 +1,11 @@
-import { TELEGRAM_BOT_TOKEN } from '../utils/config';
+import config from '../utils/config';
 
 import { Telegraf } from 'telegraf';
 import { message } from 'telegraf/filters';
 import { handleMessage } from './handler';
 
 const start = async () => {
-  const bot = new Telegraf(TELEGRAM_BOT_TOKEN, {
+  const bot = new Telegraf(config.telegram.TELEGRAM_BOT_TOKEN, {
     handlerTimeout: 900_000,
   });
 

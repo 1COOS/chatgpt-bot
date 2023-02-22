@@ -1,9 +1,9 @@
 import { ChatGPTAPI } from 'chatgpt';
 import { jsonDB, retryRequest } from './utils/tools.js';
-import { OPENAI_KEY } from './utils/config';
+import config from './utils/config';
 
 const chatGPT = new ChatGPTAPI({
-  apiKey: OPENAI_KEY,
+  apiKey: config.openai.OPENAI_KEY,
 });
 
 const getChatGPTReply = async (prompt: string, chatId: string, callback?) => {
