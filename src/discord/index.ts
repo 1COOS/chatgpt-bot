@@ -1,8 +1,8 @@
-import config from '../utils/config';
-import { registerCommands } from './commands';
-import { chatGPTReply } from '../chatgpt';
 import { Client, GatewayIntentBits, Events } from 'discord.js';
+import { registerCommands } from './commands';
+import { chatGPTReply } from '../chatgpt/chatgpt';
 import { handleMessage } from './handler';
+import config from '../utils/config';
 
 const start = async () => {
   const client = new Client({
@@ -26,23 +26,13 @@ const start = async () => {
   client.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     await interaction.deferReply();
-
-    // const prompt = interaction.options.getString('question');
-
-    // const response = await chatGPTReply(prompt, interaction.user.id);
-    // await interaction.editReply(response);
-
     handleMessage(interaction);
   });
 
   client.on(Events.MessageCreate, async (message) => {
-    // if (
-    //   process.env.ENABLE_DIRECT_MESSAGES !== 'true' ||
-    //   message.channel.type != ChannelType.DM ||
-    //   message.author.bot
-    // ) {
-    //   return;
-    // }
+    if (!config.discord.ENABLE_DIRECT_MESSAGE || message.author.bot) {
+      return;
+    }
     const user = message.author;
     console.log(message);
     console.log('----Direct Message---');
@@ -53,8 +43,6 @@ const start = async () => {
     console.log('--------------');
 
     if (message.mentions.has(client.user.id)) {
-      // handleMessage(message.content, user.id);
-
       const response = await chatGPTReply(message.content, user.id);
       await message.reply(response);
     }

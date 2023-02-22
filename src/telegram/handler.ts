@@ -1,5 +1,5 @@
 import { jsonDB } from '../utils/tools';
-import { chatGPTReply } from '../chatgpt';
+import { chatGPTReply } from '../chatgpt/chatgpt';
 
 export const handleMessage = async (ctx) => {
   // When the bot receives a text message

@@ -6,6 +6,9 @@ export default {
   discord: {
     DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN,
     DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+    ENABLE_DIRECT_MESSAGE: true,
+    ENABLE_EMBED_MESSAGE: true,
+    MAX_RESPONSE_CHUNK_LENGTH: 1500,
   },
   telegram: {
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,

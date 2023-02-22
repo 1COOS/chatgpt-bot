@@ -1,6 +1,6 @@
 import { ChatGPTAPI } from 'chatgpt';
-import { jsonDB, retryRequest } from './utils/tools.js';
-import config from './utils/config';
+import { jsonDB, retryRequest } from '../utils/tools.js';
+import config from '../utils/config';
 
 const chatGPT = new ChatGPTAPI({
   apiKey: config.openai.OPENAI_KEY,
@@ -9,8 +9,8 @@ const chatGPT = new ChatGPTAPI({
 const getChatGPTReply = async (prompt: string, chatId: string, callback?) => {
   const chatInfo = jsonDB.get(chatId) ?? {};
   const chatOption = {
-    conversationId: chatInfo.conversationId ?? undefined,
-    parentMessageId: chatInfo.parentMessageId ?? undefined,
+    conversationId: chatInfo.conversationId,
+    parentMessageId: chatInfo.parentMessageId,
     promptPrefix: `Current date: ${new Date().toISOString()}\n\n`,
     onProgress: (progress) => {
       if (callback) {

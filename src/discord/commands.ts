@@ -1,5 +1,5 @@
-import config from '../utils/config';
 import { REST, Routes } from 'discord.js';
+import config from '../utils/config';
 
 export const registerCommands = async () => {
   const rest = new REST({ version: '10' }).setToken(
@@ -33,7 +33,7 @@ const Commands = [
   },
   {
     name: 'image',
-    description: 'Ask Anything!',
+    description: 'Describe your image',
     options: [
       {
         name: 'prompt',

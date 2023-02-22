@@ -1,7 +1,7 @@
 import WebSocket from 'ws';
 import config from '../utils/config';
 
-function generateHash() {
+const generateHash = () => {
   const chars = 'qwertyuopasdfghjklizxcvbnm0123456789';
   let hash = '';
   for (let i = 0; i < 11; i++) {
@@ -11,9 +11,9 @@ function generateHash() {
     session_hash: hash,
     fn_index: 2,
   };
-}
+};
 
-function generate(prompt, cb, tryCount = 5) {
+const generate = (prompt, cb, tryCount = 5) => {
   const client = new WebSocket(config.stableDiffusion.API_URL);
   const hash = generateHash();
 
@@ -76,7 +76,7 @@ function generate(prompt, cb, tryCount = 5) {
         }
     }
   });
-}
+};
 
 export default {
   generate,
