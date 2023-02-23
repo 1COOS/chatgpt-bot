@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 <h1 align="center">🤖 ChatGPT-BOT </h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
@@ -6,11 +7,7 @@
   </a>
 </p>
 
-<br/>
-
 > Get a discord bot or a telegram bot in a few steps  
-
-<br/>
 
 ## Features
 - [x] Private conversation 
@@ -20,7 +17,6 @@
 - [x] Support Dockerfile to deploy.
 - [ ] Other
 
-<br/>
 
 ## Prerequisites
 
@@ -28,7 +24,6 @@
 
 You should install ***pnpm*** (recommended) or ***yarn*** or ***npm*** in your local system.
 
-<br/>
 
 ## How to run
 
@@ -102,7 +97,6 @@ You should install ***pnpm*** (recommended) or ***yarn*** or ***npm*** in your l
       restart: unless-stopped 
    ```
 
-<br/>
 
 ## Contributing 👏🏻 
 
@@ -110,18 +104,16 @@ You should install ***pnpm*** (recommended) or ***yarn*** or ***npm*** in your l
 >
 >Don't forget to give the project a star! Thanks again! 🍵
 
-<br/>
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-<br/>
 
 ## Contact
 
 1COOS - [Discord](https://discord.gg/nxWJGvfq) - 1coosgroup@gmail.com
 
-<p align="right">[ <a href="#readme-top">back to top</a> ]</p>
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
 
 
