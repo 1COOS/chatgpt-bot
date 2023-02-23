@@ -33,7 +33,7 @@ const Commands = [
     ],
   },
   {
-    name: Constants.Commands.CHAT,
+    name: Constants.Commands.IMAGE,
     description: 'Describe your image',
     options: [
       {

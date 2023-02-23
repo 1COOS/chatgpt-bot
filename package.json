@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "author": "Bruce<kingerpku@gmail.com>",
+  "author": "Bruce.W<1coosgroup@gmail.com>",
   "scripts": {
     "dev": "tsc-watch --noClear --onSuccess \"npm run start\"",
     "build": "tsc",

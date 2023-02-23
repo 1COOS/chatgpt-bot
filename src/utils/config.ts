@@ -3,6 +3,10 @@ import { config } from 'dotenv';
 config({ path: '.env' });
 
 export default {
+  app: {
+    ENABLE_DISCORD: process.env.ENABLE_DISCORD,
+    ENABLE_TELEGRAM: process.env.ENABLE_TELEGRAM,
+  },
   discord: {
     DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN,
     DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,

@@ -9,7 +9,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 COPY package.json /app/
 
-RUN pnpm install
+RUN pnpm i
 
 COPY . /app/
 
