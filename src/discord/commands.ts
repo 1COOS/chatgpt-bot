@@ -1,5 +1,6 @@
 import { REST, Routes } from 'discord.js';
 import config from '../utils/config';
+import Constants from '../utils/constants';
 
 export const registerCommands = async () => {
   const rest = new REST({ version: '10' }).setToken(
@@ -20,23 +21,35 @@ export const registerCommands = async () => {
 
 const Commands = [
   {
-    name: 'chat',
+    name: Constants.Commands.CHAT,
     description: 'Ask Anything!',
     options: [
       {
-        name: 'question',
-        description: 'Your question',
+        name: Constants.PROMPT_STRING,
+        description: 'Your prompt',
         type: 3,
         required: true,
       },
     ],
   },
   {
-    name: 'image',
+    name: Constants.Commands.CHAT,
     description: 'Describe your image',
     options: [
       {
-        name: 'prompt',
+        name: Constants.PROMPT_STRING,
+        description: 'Your prompt',
+        type: 3,
+        required: true,
+      },
+    ],
+  },
+  {
+    name: Constants.Commands.FILE,
+    description: 'Describe your file',
+    options: [
+      {
+        name: Constants.PROMPT_STRING,
         description: 'Your prompt',
         type: 3,
         required: true,

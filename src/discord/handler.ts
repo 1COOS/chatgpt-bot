@@ -1,58 +1,38 @@
 import { AttachmentBuilder, EmbedBuilder } from 'discord.js';
 import { chatGPTReply } from '../chatgpt/chatgpt';
 import config from '../utils/config';
+import Constants from '../utils/constants';
 import stableDiffusion from '../utils/diffusion';
 
 export const handleMessage = async (interaction) => {
   switch (interaction.commandName) {
-    // case UNLOCK_THOUGHT_CONTROL:
-    //   // Reply with the UNLOCK_THOUGHT_CONTROL_MESSAGE and remove the keyboard
-    //   await ctx.reply(UNLOCK_THOUGHT_CONTROL_MESSAGE, removeKeyboard);
-    //   break;
-    case 'text':
-    case 'chat':
+    case Constants.Commands.TEXT:
+    case Constants.Commands.CHAT:
       handleText(interaction);
       break;
-
-    case 'image':
+    case Constants.Commands.IMAGE:
       handleImage(interaction);
       break;
-
+    case Constants.Commands.FILE:
+      handleFile(interaction);
+      break;
     default:
       await interaction.reply({ content: 'Command Not Found' });
   }
-  // });
 };
 
 const handleText = async (interaction) => {
-  const prompt = interaction.options.getString('question');
+  const prompt = interaction.options.getString(Constants.PROMPT_STRING);
   const response = await chatGPTReply(prompt, interaction.user.id);
 
   if (config.discord.ENABLE_EMBED_MESSAGE) {
     const embed = createEmbed(interaction.user, prompt, response);
 
     await interaction.editReply({ embeds: [embed] });
-    // const stableDiffusionPrompt = response.slice(
-    //   0,
-    //   Math.min(response.length, 200),
-    // );
-    // stableDiffusion.generate(stableDiffusionPrompt, async (result) => {
-    //   const results = result.results;
-    //   if (!results || results.length == 0) {
-    //     return;
-    //   }
-    //   const data = result.results[0].split(',')[1];
-    //   const buffer = Buffer.from(data, 'base64');
-    //   const attachment = new AttachmentBuilder(buffer, {
-    //     name: 'result0.jpg',
-    //   });
-    //   embed.setImage('attachment://result0.jpg');
-    //   await interaction.editReply({ embeds: [embed], files: [attachment] });
-    // });
   } else {
     if (response.length >= config.discord.MAX_RESPONSE_CHUNK_LENGTH) {
       const attachment = new AttachmentBuilder(Buffer.from(response, 'utf-8'), {
-        name: 'response.txt',
+        name: 'Response.txt',
       });
       await interaction.editReply({ files: [attachment] });
     } else {
@@ -61,8 +41,18 @@ const handleText = async (interaction) => {
   }
 };
 
+const handleFile = async (interaction) => {
+  console.log(interaction);
+  const prompt = interaction.options.getString(Constants.PROMPT_STRING);
+  const response = await chatGPTReply(prompt, interaction.user.id);
+  const attachment = new AttachmentBuilder(Buffer.from(response, 'utf-8'), {
+    name: `GPT_${interaction.id}.txt`,
+  });
+  await interaction.editReply({ files: [attachment] });
+};
+
 const handleImage = async (interaction) => {
-  const prompt = interaction.options.getString('prompt');
+  const prompt = interaction.options.getString(Constants.PROMPT_STRING);
   try {
     stableDiffusion.generate(prompt, async (result) => {
       if (result.error) {
@@ -115,23 +105,3 @@ const createEmbed = (user, prompt, response) => {
   }
   return embed;
 };
-
-// export async function splitAndSendResponse(resp, user) {
-//   let tryCount = 3;
-//   while (resp.length > 0 && tryCount > 0) {
-//     try {
-//       let end = Math.min(MAX_RESPONSE_CHUNK_LENGTH, resp.length);
-//       await user.send(resp.slice(0, end));
-//       resp = resp.slice(end, resp.length);
-//     } catch (e) {
-//       tryCount--;
-//       console.error(
-//         'splitAndSendResponse Error : ' + e + ' | Counter ' + tryCount,
-//       );
-//     }
-//   }
-
-//   if (tryCount <= 0) {
-//     throw 'Failed to send dm.';
-//   }
-// }

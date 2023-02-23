@@ -44,25 +44,3 @@ export const chatGPTReply = async (
     return null;
   }
 };
-
-/*
-  type SendMessageOptions = {
-    conversationId?: string;  
-    parentMessageId?: string;
-    messageId?: string;
-    stream?: boolean;
-    promptPrefix?: string;
-    promptSuffix?: string;
-    timeoutMs?: number;
-    onProgress?: (partialResponse: ChatMessage) => void;
-    abortSignal?: AbortSignal;
-};
-interface ChatMessage {
-    id: string;
-    text: string;
-    role: Role;
-    parentMessageId?: string;
-    conversationId?: string;
-    detail?: any;
-}
-*/
