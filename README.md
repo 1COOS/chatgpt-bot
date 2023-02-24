@@ -7,7 +7,7 @@
   </a>
 </p>
 
-> Get a discord bot or a telegram bot in a few steps  
+> Get a discord bot and a telegram bot in a few steps  
 
 ## Features
 - [x] Private conversation 
@@ -17,12 +17,16 @@
 - [x] Support Dockerfile to deploy.
 - [ ] Other
 
+## Screenshot
+<p>
+  <img width="500" src="./assets/screenshot_v1.png" alt="screenshot">
+</p>
 
 ## Prerequisites
 
 [![node](https://img.shields.io/badge/node-%3E%3D16-green)](https://nodejs.org/)
 
-You should install ***pnpm*** (recommended) or ***yarn*** or ***npm*** in your local system.
+You should install `pnpm` (recommended) or `yarn` or `npm` in your local system.
 
 
 ## How to run
@@ -33,29 +37,32 @@ You should install ***pnpm*** (recommended) or ***yarn*** or ***npm*** in your l
    ```sh
    $ git clone git@github.com:1COOS/chatgpt-bot.git
    ```
-2. Install dependencies
-   ```sh
-   $ pnpm i
-   ```
-3. Set up the environment variables in .env.example, and rename it to .env
+2. Config environment variables
+   
+   Copy `.env.example` to `.env`
    ```properties
    ENABLE_DISCORD = true
-   ENABLE_TELEGRAM = true
+   ENABLE_TELEGRAM = false
    DISCORD_BOT_TOKEN = your_discord_token
    DISCORD_CLIENT_ID = your_discord_client_id
    TELEGRAM_BOT_TOKEN = your_discord_token
    OPENAI_KEY = your_openai_key
    ```
-4. Start the bot
-
+3. Start the bot
    ```sh
+   # Install dependencies
+   $ pnpm i
+
+   # Start the bot
+   $ pnpm run run
+
+   # Or run in the dev mode
    $ pnpm run dev
-   ```
-   or
 
-   ```sh
-   $ yarn dev
+   # Or run in pm2 - https://pm2.keymetrics.io
+   $ pnpm run run:pm2
    ```
+
 ### *Docker*
 1. Pull the docker image
    ```sh
@@ -82,7 +89,6 @@ You should install ***pnpm*** (recommended) or ***yarn*** or ***npm*** in your l
 
    ```yaml
    version: '3.9'
-
    services:
       chatgpt-bot:
       image: 1coos/chatgpt-bot:v1.0
