@@ -1,10 +1,10 @@
 <a name="readme-top"></a>
 <h1 align="center">🤖 ChatGPT-BOT </h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
 > Get a discord bot and a telegram bot in a few steps  
@@ -19,7 +19,7 @@
 
 ## Screenshot
 <p>
-  <img width="500" src="./assets/screenshot_v1.png" alt="screenshot">
+  <img width="700" src="./assets/screenshot_v1.png" alt="screenshot">
 </p>
 
 ## Prerequisites
