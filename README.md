@@ -91,7 +91,7 @@ You should install `pnpm` (recommended) or `yarn` or `npm` in your local system.
    version: '3.9'
    services:
       chatgpt-bot:
-      image: 1coos/chatgpt-bot:v1.0
+      image: 1coos/chatgpt-bot:latest
       container_name: chatgpt-bot
       environment:
          ENABLE_DISCORD: true
@@ -121,5 +121,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 1COOS - [Discord](https://discord.gg/nxWJGvfq) - 1coosgroup@gmail.com
 
 <p align="right">[<a href="#readme-top">back to top</a>]</p>
+
+
 
 
